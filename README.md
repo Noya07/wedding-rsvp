@@ -31,3 +31,13 @@ The tech stack will be very simple to make it as quick and smooth as possible:
 * Gradle
 * Thymeleaf
 * Bootstrap
+
+
+To checkout the project simply use:
+**WINDOWS**
+`.\gradlew.bat build`
+`.\gradlew.bat bootRun`
+
+**UNIX**
+`./gradlew build`
+`./gradlew bootRun`
