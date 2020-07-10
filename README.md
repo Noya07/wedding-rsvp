@@ -45,3 +45,13 @@ To checkout the project simply use: \
 
 
 Then go to `localhost:8080/rsvp`
+
+**MongoDB**
+
+To add some sample data just create a db called 'rsvp' and add a collection 'guest', then insert some sample data like:
+```JSON
+{
+    "name": "Billy Joe Bob",
+    "rsvpCode": "B1L03"
+}
+```
