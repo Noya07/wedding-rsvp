@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>RSVP Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="rsvp.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.8.1/js/bootstrap.min.js"></script>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <row>
+            <a th:href="@{?lang=de}"><img height="50px" th:src="@{/images/DE.svg}"/></a>
+            <a th:href="@{?lang=en}"><img height="50px" th:src="@{/images/IE.svg}"/></a>
+            <a th:href="@{?lang=es}"><img height="50px" th:src="@{/images/ES.svg}"/></a>
+            <a th:href="@{?lang=lt}"><img height="50px" th:src="@{/images/LT.svg}"/></a>
+        </row>
+        <h1 id="test" th:text="#{rsvp.greeting}"></h1>
+    </div>
+    <form method="POST" th:object="${rsvpCode}">
+        <h5 class="text-center " th:text="#{rsvp.info}"></h5>
+        <div class="row">
+            <div class="col"></div>
+            <input type="text" class="form-control form-control-lg col text-center" th:placeholder="#{rsvp.code}" th:field="*{code}">
+            <div class="col"></div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col"></div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>RSVP Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.8.1/js/bootstrap.min.js"></script>
+    <script src="i18n.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <row>
+            <a th:href="@{?lang=de}"><img height="50px" th:src="@{/images/DE.svg}"/></a>
+            <a th:href="@{?lang=en}"><img height="50px" th:src="@{/images/IE.svg}"/></a>
+            <a th:href="@{?lang=es}"><img height="50px" th:src="@{/images/ES.svg}"/></a>
+            <a th:href="@{?lang=lt}"><img height="50px" th:src="@{/images/LT.svg}"/></a>
+        </row>
+        <h1 id="test" th:text="#{rsvp.greeting}"></h1>
+        <h1 id="guest" th:text="*{guest.name}"></h1>
+    </div>
+    <form method="POST" th:object="${rsvpResponse}">
+        <div class="row">
+            <div class="input-group input-group-lg col-6">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" th:text="#{response.diet.label}"/>
+                </div>
+                <select class="custom-select custom-select-lg" th:field="*{diet}">
+                    <option th:each="option : ${T(de.wedding.rsvp.model.RsvpResponse.Diet).values()}"
+                            th:value="${option}" th:text="${option}"></option>
+                </select>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" th:text="#{response.children.label}"/>
+                </div>
+                <input type="number" class="form-control form-control-lg" placeholder="" min="1" max="14" size="2" th:field="*{children}"/></br></br>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="partner" th:field="*{partner}">
+                <label class="custom-control-label" for="partner" th:text="#{response.partner.label}"></label>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="friday" th:field="*{friday}">
+                <label class="custom-control-label" for="friday" th:text="#{response.friday.label}"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="breakfast" th:field="*{breakfast}">
+                <label class="custom-control-label" for="breakfast" th:text="#{response.breakfast.label}"></label>
+            </div>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
